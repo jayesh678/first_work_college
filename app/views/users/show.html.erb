@@ -1,0 +1,29 @@
+<div class="profile-box">
+  <h1>Your Profile</h1>
+  <div class="profile-field">
+    <p>Email:</p>
+    <div class="editable-field" contenteditable="true"><%= @user.email %></div>
+  </div>
+
+  <div class="profile-field">
+    <p>First Name:</p>
+    <div class="editable-field" contenteditable="true"><%= @user.firstname %></div>
+  </div>
+  
+  <div class="profile-field">
+    <p>Last Name:</p>
+    <div class="editable-field" contenteditable="true"><%= @user.lastname %></div>
+  </div>
+
+  <div class="profile-field">
+    <p>Company Unique ID:</p>
+    <div class="editable-field" contenteditable="true"><%= @user.company.company_uniqueid %></div>
+  </div>
+
+  <div class="profile-field">
+    <p>Role:</p>
+    <div class="editable-field" contenteditable="true"><%= Role.find(@user.role_id).role_name %></div>
+  </div>
+
+  <button class="edit-button">Save Changes</button>
+</div>

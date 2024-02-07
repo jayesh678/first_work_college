@@ -1,0 +1,61 @@
+<div class="form-container">
+  <h1>Create New User</h1>
+
+  <%= form_with(model: @user, local: true) do |form| %>
+    <% if @user.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+        <ul>
+          <% @user.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-field">
+      <%= form.label :firstname %>
+      <%= form.text_field :firstname, class: "form-input" %>
+    </div>
+
+    <div class="form-field">
+      <%= form.label :lastname %>
+      <%= form.text_field :lastname, class: "form-input" %>
+    </div>
+
+    <div class="form-field">
+      <%= form.label :email %>
+      <%= form.email_field :email, class: "form-input" %>
+    </div>
+
+    <div class="form-field">
+      <%= form.label :password %>
+      <%= form.password_field :password, class: "form-input" %>
+    </div>
+
+    <div class="form-field">
+      <%= form.label :password_confirmation %>
+      <%= form.password_field :password_confirmation, class: "form-input" %>
+    </div>
+
+    <!-- Add fields for role and company -->
+    <div class="field">
+      <%= form.label :role %>
+      <%= form.collection_select :role_id, Role.where(role_name: ['admin', 'user']), :id, :role_name, prompt: "Select Role", class: "form-input" %>
+    </div>
+
+    <div class="field">
+      <%= form.label :company %>
+      <%= form.collection_select :company_id, Company.all, :id, :company_name, prompt: "Select Company", class: "form-input" %>
+    </div>
+
+    <div class="form-field">
+      <%= form.label :avatar %>
+      <%= form.file_field :avatar, class: "form-input" %>
+    </div>
+
+    <div class="form-field">
+      <%= form.button 'Create User', class: "form-button" %>
+    </div>
+  <% end %>
+</div>
